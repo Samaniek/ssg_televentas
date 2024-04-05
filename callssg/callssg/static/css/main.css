@@ -1,0 +1,33 @@
+/* main.css */
+
+body {
+   background-color: #f2f4f7; /* Cambia "lightgreen" por el color que desees */
+}
+
+fieldset {
+   font-size: 14px;
+}
+
+.form-group {
+   margin-bottom: 15px;
+}
+
+.btn {
+   margin-top: 15px;
+}
+
+.form-control {
+   width: 120px;
+}
+
+.container {
+   margin-top: 5px;
+}
+
+.legend-custom {
+   margin-top: 15px; /* Puedes ajustar el valor según sea necesario */
+}
+
+.container_notas {
+   padding-right: 100px;
+}

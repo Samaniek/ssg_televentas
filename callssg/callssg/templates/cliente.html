@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente</title>
+</head>
+<body class="text-dark">
+    {% block content %}
+    <div class="container-fluid">
+        <h1 class="mt-4">Datos Personales</h1>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                {% for cliente in page_obj %}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <legend></legend>
+                                    <!-- Cedula -->
+                                    <div class="form-group">
+                                        <label for="{{ form.cedula.id_for_label }}">Cedula:</label>
+                                        {{ form.cedula.errors }}
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="cedula" value="{{ cliente.cedula }}">
+                                            {{ form.cedula }}
+                                        </div>
+                                    </div>
+                                    <!-- Primer nombre -->
+                                    <div class="form-group">
+                                        <label for="{{ form.primer_nombre.id_for_label }}">Primer Nombre:</label>
+                                        {{ form.primer_nombre.errors }}
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="primer_nombre" value="{{ cliente.primer_nombre }}">
+                                            {{ form.primer_nombre }}
+                                        </div>
+                                    </div>
+                                    <!-- Segundo Nombre -->
+                                    <div class="form-group">
+                                        <label for="{{ form.segundo_nombre.id_for_label }}">Segundo Nombre:</label>
+                                        {{ form.segundo_nombre.errors }}
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="segundo_nombre" value="{{ cliente.segundo_nombre }}">
+                                            {{ form.segundo_nombre }}
+                                        </div>
+                                    </div>
+                                    <!-- Primer Apellido -->
+                                    <div class="form-group">
+                                        <label for="{{ form.primer_apellido.id_for_label }}">Primer Apellido:</label>
+                                        {{ form.primer_apellido.errors }}
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="primer_apellido" value="{{ cliente.primer_apellido }}">
+                                            {{ form.primer_apellido }}
+                                        </div>
+                                    </div>
+                                    <!-- Segundo Apellido -->
+                                    <div class="form-group">
+                                        <label for="{{ form.segundo_apellido.id_for_label }}">Segundo Apellido:</label>
+                                        {{ form.segundo_apellido.errors }}
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="segundo_apellido" value="{{ cliente.segundo_apellido }}">
+                                            {{ form.segundo_apellido }}
+                                        </div>
+                                    </div>
+                                    <!-- Estado Civil -->
+                                    <div class="form-group">
+                                        <label for="sel_estado_civil">Estado Civil:</label>
+                                        <select class="form-control" id="sel_estado_civil" name="sel_estado_civil">
+                                            <option value="0" {% if cliente.estado_civil == 'Soltero' %} selected {% endif %}>Soltero</option>
+                                            <option value="1" {% if cliente.estado_civil == 'Casado' %} selected {% endif %}>Casado</option>
+                                            <option value="2" {% if cliente.estado_civil == 'Viudo' %} selected {% endif %}>Viudo</option>
+                                            <option value="3" {% if cliente.estado_civil == 'Divorciado' %} selected {% endif %}>Divorciado</option>
+                                            <option value="4" {% if cliente.estado_civil == 'Vacío' %} selected {% endif %}>Vacío</option>
+                                        </select>
+                                    </div>
+                                    <!-- F. Nacimiento -->
+                                    <div class="form-group">
+                                        <label for="txt_prospecto_fcNac">Fc. Nacimiento:</label>
+                                        <input type="date" id="txt_prospecto_fcNac" name="txt_prospecto_fcNac" value="{{ cliente.fecha_nacimiento }}">
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Segunda columna -->
+                        <div class="col-md-3">
+                            <fieldset>
+                                <!-- email -->
+                                <div class="form-group">
+                                    <label for="{{ form.email.id_for_label }}">Email:</label>
+                                    {{ form.email.errors }}
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="primer_apellido" value="{{ cliente.email }}">
+                                        {{ form.email }}
+                                    </div>
+                                </div>
+                                <br>
+                                <!-- Genero -->
+                                {{ form.genero.errors }}
+                                <td align="center">Genero:</td>
+                                <br>
+                                <td>
+                                    <input type="radio" id="rad_genero_masculino" name="rad_genero" value="1" {% if cliente.genero == 'M' %} checked {% endif %}>
+                                    M
+                                    <br>
+                                    <input type="radio" id="rad_genero_femenino" name="rad_genero" value="2" {% if cliente.genero == 'F' %} checked {% endif %}>
+                                    F
+                                </td>
+                                <br>
+                                <br>
+                                <!-- Zurdo -->
+                                {{ form.zurdo.errors }}
+                                <td align="center">Zurdo:</td>
+                                <br>
+                                <br>
+                                <td>
+                                    <input type="radio" id="rad_zurdo" name="rad_zurdo" value="1" {% if cliente.zurdo %} checked {% endif %}>
+                                    Si
+                                    <br>
+                                    <input type="radio" id="rad_zurdo" name="rad_zurdo" value="2" {% if not cliente.zurdo %} checked {% endif %}>
+                                    No
+                                </td>
+                                <br>
+                                <br>
+                                <!-- mascota -->
+                                {{ form.mascota.errors }}
+                                <td align="center">Mascota:</td>
+                                <br>
+                                <br>
+                                <td>
+                                    <input type="radio" id="rad_mascota" name="rad_mascota" value="1" {% if cliente.mascota %} checked {% endif %}>
+                                    Si
+                                    <br>
+                                    <input type="radio" id="rad_mascota" name="rad_mascota" value="2" {% if not cliente.mascota %} checked {% endif %}>
+                                    No
+                                </td>
+                                <br>
+                                <br>
+                                <!-- Ocupación -->
+                                {{ form.as_p }}
+                                <td align="center">Ocupación:</td>
+                                <div class="container_bloque_seleccion">
+                                    <td>
+                                        <select class="form-control" id="sel_ocupacion" name="sel_ocupacion" onfocusout="validar_comunes()">
+                                            <option value="0">Policía</option>
+                                            <option value="1">Soldador</option>
+                                            <option value="2">Médico/a</option>
+                                            <option value="3">Enfermero/a</option>
+                                            <option value="3">Abogado/a</option>
+                                            <option value="3">Arquitecto/a</option>
+                                            <option value="3">Electricista</option>
+                                            <option value="4" selected>Vacío</option>
+                                        </select>
+                                    </td>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <!-- Tercera columna -->
+                        <div class="col-md-4" style="padding-left: 100px;"> <!-- Mover el bloque notas -->
+                            <!-- NOTAS--> 
+                            <div class="container_notas">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="comentario">Notas</label>
+                                        <textarea class="form-control" rows="5" id="Notas" style="width: 170%;"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </form>
+                            </div>
+                        </div>   
+                    </div>
+                    <br>
+                    <h1>Datos Adicionales</h1>
+                    <!-- CONTACTO -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <fieldset>
+                                <legend>Contactos</legend>
+                                <!-- Teléfono 1 -->
+                                {{ form.telefono1.errors }}
+                                <div class="form-group">
+                                    <label for="{{ form.telefono1.id_for_label }}">Teléfono 1:</label>
+                                    <input type="text" class="form-control" id="telefono1" value="{{ cliente.telefono1 }}" style="width: 190px;">
+                                    {{ form.telefono1 }}
+                                </div>
+                                <!-- Teléfono 2 -->
+                                {{ form.telefono2.errors }}
+                                <div class="form-group">
+                                    <label for="{{ form.telefono2.id_for_label }}">Teléfono 2:</label>
+                                    <input type="text" class="form-control" id="telefono2" value="{{ cliente.telefono2 }}" style="width: 190px;">
+                                    {{ form.telefono2 }}
+                                </div>
+                                <!-- Teléfono 3 -->
+                                {{ form.telefono3.errors }}
+                                <div class="form-group">
+                                    <label for="{{ form.telefono3.id_for_label }}">Teléfono 3:</label>
+                                    <input type="text" class="form-control" id="telefono3" value="{{ cliente.telefono3 }}" style="width: 190px;">
+                                    {{ form.telefono3 }}
+                                </div>
+                                <!-- Teléfono 4 -->
+                                {{ form.telefono4.errors }}
+                                <div class="form-group">
+                                    <label for="{{ form.telefono4.id_for_label }}">Teléfono 4:</label>
+                                    <input type="text" class="form-control" id="telefono4" value="{{ cliente.telefono4 }}" style="width: 190px;">
+                                    {{ form.telefono4 }}
+                                </div>
+                            </fieldset>
+                        </div>
+                        <!-- DIRECCIONES -->
+                        <div class="col-md-6">
+                            <fieldset>
+                                <legend>Direcciones</legend>
+                                <!-- Dirección-->
+                                {{ form.direccion.errors }}
+                                <div class="form-group">
+                                    <label for="{{ form.direccion.id_for_label }}">Dirección:</label>
+                                    <input type="text" class="form-control" id="direccion" value="{{ cliente.direccion }}" style="width: 190px;">
+                                    {{ form.direccion }}
+                                </div>
+                                <!-- Calle 1 -->
+                                {{ form.calle1.errors }}
+                                <div class="form-group">
+                                    <label for="{{ form.calle1.id_for_label }}">Calle 1:</label>
+                                    <input type="text" class="form-control" id="calle1" value="{{ cliente.calle1 }}" style="width: 190px;">
+                                    {{ form.calle1 }}
+                                </div>
+                                <!-- Calle 2 -->
+                                {{ form.calle2.errors }}
+                                <div class="form-group">
+                                    <label for="{{ form.calle2.id_for_label }}">Calle 2:</label>
+                                    <input type="text" class="form-control" id="calle2" value="{{ cliente.calle2 }}" style="width: 190px;">
+                                    {{ form.calle2 }}
+                                </div>
+                                <td align="center">Departamento:</td>
+                                <div class="container_bloque_departamento">
+                                    <td>
+                                        <select class="form-control" id="sel_departamento" name="sel_departamento" onfocusout="validar_comunes()">
+                                            <option value="0">Asunción</option>
+                                            <option value="1">San Pedro</option>
+                                            <option value="2">Cordillera</option>
+                                            <option value="3">Guairá</option>
+                                            <option value="4">Caaguazú</option>
+                                            <option value="5">Caazapá</option>
+                                            <option value="6">Itapúa</option>
+                                            <option value="7">Misiones</option>
+                                            <option value="8">Paraguarí</option>
+                                            <option value="9">Alto Paraná</option>
+                                            <option value="10">Central</option>
+                                            <option value="11">Ñeembucú</option>
+                                            <option value="12">Amambay</option>
+                                            <option value="13">Canindeyú</option>
+                                            <option value="14">Presidente Hayes</option>
+                                            <option value="15">Alto Paraguay</option>
+                                            <option value="16">Boquerón</option>
+                                            <option value="17">Concepción</option>
+                                            <option value="18" selected>Vacío</option>
+                                        </select>
+                                    </td>
+                                </div>
+                                <br>
+                                <td align="center">Barrio:</td>
+                                <div class="container_bloque_barrio">
+                                    <td>
+                                        <select class="form-control" id="sel_barrio" name="sel_barrio" onfocusout="validar_comunes()">
+                                            <option value="0">Loma Pytá</option>
+                                            <option value="1">Sajonia</option>
+                                            <option value="2">Mariscal López</option>
+                                            <option value="3">San Vicente</option>
+                                            <option value="4">Santa Ana</option>
+                                            <option value="5">Trinidad</option>
+                                            <option value="6">Madame Lynch</option>
+                                            <option value="7">Manorá</option>
+                                            <option value="8">Las Mercedes</option>
+                                            <option value="9">Jara</option>
+                                            <option value="10">Nazareth</option>
+                                            <option value="11">Ricardo Brugada (Tacumbú)</option>
+                                            <option value="12">Hipódromo</option>
+                                            <option value="13">General Díaz</option>
+                                            <option value="14">Villa Aurelia</option>
+                                            <option value="15">Mburucuyá</option>
+                                            <option value="16">San Blas</option>
+                                            <option value="16">Florida</option>
+                                            <option value="17" selected>Vacío</option>
+                                        </select>
+                                    </td>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+                <!-- PAGINACIÓN -->
+                {% if is_paginated %}
+                    <div class="pagination justify-content-center">
+                        <span class="step-links">
+                            {% if page_obj.has_previous %}
+                                <a href="?page=1">&laquo; Primero</a>
+                                <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                            {% endif %}
+                            <span class="current">
+                                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                            </span>
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+                                <a href="?page={{ page_obj.paginator.num_pages }}">Último &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <!-- BOTON GUARDAR -->
+        <button type="submit" class="btn btn-primary">Finalizar</button>
+    </div>
+    {% endblock %}
+</body>
+</html>

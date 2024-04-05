@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SSG</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!-- Agrega los scripts de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- Aquí podrías incluir la barra de navegación u otros elementos comunes -->
+
+    {% block content %}
+    <!-- Este bloque se llenará con el contenido específico de cada página -->
+    {% endblock %}
+
+    <!-- Aquí podrías incluir el pie de página u otros elementos comunes -->
+    <footer class="main-footer text-center text-primary">
+        <a href="" target="_blank" rel="noopener noreferrer">
+            <strong>¡EMPTY! &copy; SSG</strong>
+        </a>
+    </footer>
+</body>
+</html>
