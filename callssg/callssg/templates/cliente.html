@@ -143,18 +143,18 @@
                                 {{ form.as_p }}
                                 <td align="center">Ocupación:</td>
                                 <div class="container_bloque_seleccion">
-                                    <td>
-                                        <select class="form-control" id="sel_ocupacion" name="sel_ocupacion" onfocusout="validar_comunes()">
-                                            <option value="0">Policía</option>
-                                            <option value="1">Soldador</option>
-                                            <option value="2">Médico/a</option>
-                                            <option value="3">Enfermero/a</option>
-                                            <option value="3">Abogado/a</option>
-                                            <option value="3">Arquitecto/a</option>
-                                            <option value="3">Electricista</option>
-                                            <option value="4" selected>Vacío</option>
+                                    <div class="form-group">
+                                        <select class="form-control" id="sel_ocupacion" name="sel_ocupacion">
+                                        <option value="1" {% if cliente.ocupacion == 'Policía' %} selected {% endif %}>Policía</option>
+                                        <option value="2" {% if cliente.ocupacion == 'Soldador' %} selected {% endif %}>Soldador</option>
+                                        <option value="3" {% if cliente.ocupacion == 'Médico/a' %} selected {% endif %}>Médico/a</option>
+                                        <option value="4" {% if cliente.ocupacion == 'Enfermero/a' %} selected {% endif %}>Enfermero/a</option>
+                                        <option value="5" {% if cliente.ocupacion == 'Abogado/a' %} selected {% endif %}>Abogado/a</option>
+                                        <option value="6" {% if cliente.ocupacion == 'Arquitecto/a' %} selected {% endif %}>Arquitecto/a</option>
+                                        <option value="7" {% if cliente.ocupacion == 'Electricista' %} selected {% endif %}>Electricista</option>
+                                        <option value="8" {% if cliente.ocupacion == 'Vacío' %} selected {% endif %}>Vacío</option>
                                         </select>
-                                    </td>
+                                    </div>
                                 </div>
                             </fieldset>
                         </div>
@@ -234,58 +234,60 @@
                                     <input type="text" class="form-control" id="calle2" value="{{ cliente.calle2 }}" style="width: 190px;">
                                     {{ form.calle2 }}
                                 </div>
+
+                                <!--Departamento-->
                                 <td align="center">Departamento:</td>
-                                <div class="container_bloque_departamento">
-                                    <td>
-                                        <select class="form-control" id="sel_departamento" name="sel_departamento" onfocusout="validar_comunes()">
-                                            <option value="0">Asunción</option>
-                                            <option value="1">San Pedro</option>
-                                            <option value="2">Cordillera</option>
-                                            <option value="3">Guairá</option>
-                                            <option value="4">Caaguazú</option>
-                                            <option value="5">Caazapá</option>
-                                            <option value="6">Itapúa</option>
-                                            <option value="7">Misiones</option>
-                                            <option value="8">Paraguarí</option>
-                                            <option value="9">Alto Paraná</option>
-                                            <option value="10">Central</option>
-                                            <option value="11">Ñeembucú</option>
-                                            <option value="12">Amambay</option>
-                                            <option value="13">Canindeyú</option>
-                                            <option value="14">Presidente Hayes</option>
-                                            <option value="15">Alto Paraguay</option>
-                                            <option value="16">Boquerón</option>
-                                            <option value="17">Concepción</option>
-                                            <option value="18" selected>Vacío</option>
+                                <div class="container_bloque_seleccion">
+                                    <div class="form-group">
+                                        <select class="form-control" id="sel_ocupacion" name="sel_ocupacion">
+                                        <option value="1" {% if cliente.ocupacion == 'Asunción' %} selected {% endif %}>Asunción</option>
+                                        <option value="2" {% if cliente.ocupacion == 'San Pedro' %} selected {% endif %}>San Pedro</option>
+                                        <option value="3" {% if cliente.ocupacion == 'Cordillera' %} selected {% endif %}>Cordillera</option>
+                                        <option value="4" {% if cliente.ocupacion == 'Guairá' %} selected {% endif %}>Guairá</option>
+                                        <option value="5" {% if cliente.ocupacion == 'Caaguazú' %} selected {% endif %}>Caaguazú</option>
+                                        <option value="6" {% if cliente.ocupacion == 'Caazapá' %} selected {% endif %}>Caazapá</option>
+                                        <option value="7" {% if cliente.ocupacion == 'Itapúa' %} selected {% endif %}>Itapúa</option>
+                                        <option value="8" {% if cliente.ocupacion == 'Misiones' %} selected {% endif %}>Misiones</option>
+                                        <option value="9" {% if cliente.ocupacion == 'Paraguarí' %} selected {% endif %}>Paraguarí</option>
+                                        <option value="10" {% if cliente.ocupacion == 'Alto Paraná' %} selected {% endif %}>Alto Paraná</option>
+                                        <option value="11" {% if cliente.ocupacion == 'Central' %} selected {% endif %}>Central</option>
+                                        <option value="12" {% if cliente.ocupacion == 'Ñeembucú' %} selected {% endif %}>Ñeembucú</option>
+                                        <option value="13" {% if cliente.ocupacion == 'Amambay' %} selected {% endif %}>Amambay</option>
+                                        <option value="14" {% if cliente.ocupacion == 'Canindeyú' %} selected {% endif %}>Canindeyú</option>
+                                        <option value="15" {% if cliente.ocupacion == 'Presidente Hayes' %} selected {% endif %}>Presidente Hayes</option>
+                                        <option value="16" {% if cliente.ocupacion == 'Alto Paraguay' %} selected {% endif %}>Alto Paraguay</option>
+                                        <option value="17" {% if cliente.ocupacion == 'Boquerón' %} selected {% endif %}>Boquerón</option>
+                                        <option value="18" {% if cliente.ocupacion == 'Concepción' %} selected {% endif %}>Concepción</option>
+                                        <option value="19" {% if cliente.ocupacion == 'Vacío' %} selected {% endif %}>Vacío</option>
                                         </select>
-                                    </td>
+                                    </div>
                                 </div>
                                 <br>
-                                <td align="center">Barrio:</td>
-                                <div class="container_bloque_barrio">
-                                    <td>
-                                        <select class="form-control" id="sel_barrio" name="sel_barrio" onfocusout="validar_comunes()">
-                                            <option value="0">Loma Pytá</option>
-                                            <option value="1">Sajonia</option>
-                                            <option value="2">Mariscal López</option>
-                                            <option value="3">San Vicente</option>
-                                            <option value="4">Santa Ana</option>
-                                            <option value="5">Trinidad</option>
-                                            <option value="6">Madame Lynch</option>
-                                            <option value="7">Manorá</option>
-                                            <option value="8">Las Mercedes</option>
-                                            <option value="9">Jara</option>
-                                            <option value="10">Nazareth</option>
-                                            <option value="11">Ricardo Brugada (Tacumbú)</option>
-                                            <option value="12">Hipódromo</option>
-                                            <option value="13">General Díaz</option>
-                                            <option value="14">Villa Aurelia</option>
-                                            <option value="15">Mburucuyá</option>
-                                            <option value="16">San Blas</option>
-                                            <option value="16">Florida</option>
-                                            <option value="17" selected>Vacío</option>
+                                <td align="center">Departamento:</td>
+                                <div class="container_bloque_seleccion">
+                                    <div class="form-group">
+                                        <select class="form-control" id="sel_ocupacion" name="sel_ocupacion">
+                                        <option value="0" {% if cliente.ocupacion == 'Loma Pytá' %} selected {% endif %}>Loma Pytá</option>
+                                        <option value="1" {% if cliente.ocupacion == 'Sajonia' %} selected {% endif %}>Sajonia</option>
+                                        <option value="2" {% if cliente.ocupacion == 'Mariscal López' %} selected {% endif %}>Mariscal López</option>
+                                        <option value="3" {% if cliente.ocupacion == 'San Vicente' %} selected {% endif %}>San Vicente</option>
+                                        <option value="4" {% if cliente.ocupacion == 'Santa Ana' %} selected {% endif %}>Santa Ana</option>
+                                        <option value="5" {% if cliente.ocupacion == 'Trinidad' %} selected {% endif %}>Trinidad</option>
+                                        <option value="6" {% if cliente.ocupacion == 'Madame Lynch' %} selected {% endif %}>Madame Lynch</option>
+                                        <option value="7" {% if cliente.ocupacion == 'Manorá' %} selected {% endif %}>Manorá</option>
+                                        <option value="8" {% if cliente.ocupacion == 'Las Mercedes' %} selected {% endif %}>Las Mercedes</option>
+                                        <option value="9" {% if cliente.ocupacion == 'Jara' %} selected {% endif %}>Jara</option>
+                                        <option value="10" {% if cliente.ocupacion == 'Nazareth' %} selected {% endif %}>Nazareth</option>
+                                        <option value="11" {% if cliente.ocupacion == 'Ricardo Brugada (Tacumbú)' %} selected {% endif %}>Ricardo Brugada (Tacumbú)</option>
+                                        <option value="12" {% if cliente.ocupacion == 'Hipódromo' %} selected {% endif %}>Hipódromo</option>
+                                        <option value="13" {% if cliente.ocupacion == 'General Díaz' %} selected {% endif %}>General Díaz</option>
+                                        <option value="14" {% if cliente.ocupacion == 'Villa Aurelia' %} selected {% endif %}>Villa Aurelia</option>
+                                        <option value="15" {% if cliente.ocupacion == 'Mburucuyá' %} selected {% endif %}>Mburucuyá</option>
+                                        <option value="16" {% if cliente.ocupacion == 'San Blas' %} selected {% endif %}>San Blas</option>
+                                        <option value="17" {% if cliente.ocupacion == 'Florida' %} selected {% endif %}>Florida</option>
+                                        <option value="18" {% if cliente.ocupacion == 'Vacío' %} selected {% endif %}>Vacío</option>
                                         </select>
-                                    </td>
+                                    </div>
                                 </div>
                             </fieldset>
                         </div>
