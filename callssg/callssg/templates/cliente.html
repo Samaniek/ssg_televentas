@@ -69,7 +69,7 @@
                                     <!-- Estado Civil -->
                                     <div class="form-group">
                                         <label for="sel_estado_civil">Estado Civil:</label>
-                                        <select class="form-control" id="sel_estado_civil" name="sel_estado_civil">
+                                        <select class="form-control" id="sel_estado_civil" name="sel_estado_civil" style="width: 140px;">
                                             <option value="0" {% if cliente.estado_civil == 'Soltero' %} selected {% endif %}>Soltero</option>
                                             <option value="1" {% if cliente.estado_civil == 'Casado' %} selected {% endif %}>Casado</option>
                                             <option value="2" {% if cliente.estado_civil == 'Viudo' %} selected {% endif %}>Viudo</option>
@@ -217,29 +217,29 @@
                                 {{ form.direccion.errors }}
                                 <div class="form-group">
                                     <label for="{{ form.direccion.id_for_label }}">Dirección:</label>
-                                    <input type="text" class="form-control" id="direccion" value="{{ cliente.direccion }}" style="width: 190px;">
+                                    <input type="text" class="form-control" id="direccion" value="{{ cliente.direccion }}" style="width: 370px;">
                                     {{ form.direccion }}
                                 </div>
                                 <!-- Calle 1 -->
                                 {{ form.calle1.errors }}
                                 <div class="form-group">
                                     <label for="{{ form.calle1.id_for_label }}">Calle 1:</label>
-                                    <input type="text" class="form-control" id="calle1" value="{{ cliente.calle1 }}" style="width: 190px;">
+                                    <input type="text" class="form-control" id="calle1" value="{{ cliente.calle1 }}" style="width: 370px;">
                                     {{ form.calle1 }}
                                 </div>
                                 <!-- Calle 2 -->
                                 {{ form.calle2.errors }}
                                 <div class="form-group">
                                     <label for="{{ form.calle2.id_for_label }}">Calle 2:</label>
-                                    <input type="text" class="form-control" id="calle2" value="{{ cliente.calle2 }}" style="width: 190px;">
+                                    <input type="text" class="form-control" id="calle2" value="{{ cliente.calle2 }}" style="width: 370px;">
                                     {{ form.calle2 }}
                                 </div>
 
                                 <!--Departamento-->
                                 <td align="center">Departamento:</td>
-                                <div class="container_bloque_seleccion">
+                                <div class="container_bloque_departamento">
                                     <div class="form-group">
-                                        <select class="form-control" id="sel_ocupacion" name="sel_ocupacion">
+                                        <select class="form-control" id="sel_departamento" name="sel_departamento" style="width: 150px;">
                                         <option value="1" {% if cliente.ocupacion == 'Asunción' %} selected {% endif %}>Asunción</option>
                                         <option value="2" {% if cliente.ocupacion == 'San Pedro' %} selected {% endif %}>San Pedro</option>
                                         <option value="3" {% if cliente.ocupacion == 'Cordillera' %} selected {% endif %}>Cordillera</option>
@@ -263,10 +263,10 @@
                                     </div>
                                 </div>
                                 <br>
-                                <td align="center">Departamento:</td>
-                                <div class="container_bloque_seleccion">
+                                <td align="center">Barrio:</td>
+                                <div class="container_bloque_barrio">
                                     <div class="form-group">
-                                        <select class="form-control" id="sel_ocupacion" name="sel_ocupacion">
+                                        <select class="form-control" id="sel_barrio" name="sel_barrio" style="width: 150px;">
                                         <option value="0" {% if cliente.ocupacion == 'Loma Pytá' %} selected {% endif %}>Loma Pytá</option>
                                         <option value="1" {% if cliente.ocupacion == 'Sajonia' %} selected {% endif %}>Sajonia</option>
                                         <option value="2" {% if cliente.ocupacion == 'Mariscal López' %} selected {% endif %}>Mariscal López</option>
