@@ -80,8 +80,8 @@
                                     <!-- F. Nacimiento -->
                                     <div class="form-group">
                                         <label for="txt_prospecto_fcNac">Fc. Nacimiento:</label>
-                                        <input type="date" id="txt_prospecto_fcNac" name="txt_prospecto_fcNac" value="{{ cliente.fecha_nacimiento }}">
-                                    </div>
+                                        <input type="text" id="txt_prospecto_fcNac" name="txt_prospecto_fcNac" value="{{ cliente.fecha_nacimiento|date:'d/m/Y' }}" style="width: 140px;">
+                                    </div>                                    
                                 </fieldset>
                             </div>
                         </div>
@@ -158,16 +158,23 @@
                                 </div>
                             </fieldset>
                         </div>
+                        
                         <!-- Tercera columna -->
                         <div class="col-md-4" style="padding-left: 100px;"> <!-- Mover el bloque notas -->
                             <!-- NOTAS--> 
                             <div class="container_notas">
-                                <form role="form">
+                                <form method="post" action="{% url 'agregar_notas' %}">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
                                     <div class="form-group">
-                                        <label for="comentario">Notas</label>
-                                        <textarea class="form-control" rows="5" id="Notas" style="width: 170%;"></textarea>
+                                        <label for="Notas">Notas</label>
+                                        <textarea class="form-control" rows="5" id="notas" name="notas" style="width: 170%;">
+                                            {% for nota in notas_guardadas %}
+                                            {{ nota.notas }}
+                                            {% endfor %}
+                                        </textarea>
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
                                 </form>
                             </div>
                         </div>   
@@ -183,28 +190,28 @@
                                 {{ form.telefono1.errors }}
                                 <div class="form-group">
                                     <label for="{{ form.telefono1.id_for_label }}">Teléfono 1:</label>
-                                    <input type="text" class="form-control" id="telefono1" value="{{ cliente.telefono1 }}" style="width: 190px;">
+                                    <input type="text" class="form-control" id="telefono1" value="{{ cliente.telefono1 }}" style="width: 140px;">
                                     {{ form.telefono1 }}
                                 </div>
                                 <!-- Teléfono 2 -->
                                 {{ form.telefono2.errors }}
                                 <div class="form-group">
                                     <label for="{{ form.telefono2.id_for_label }}">Teléfono 2:</label>
-                                    <input type="text" class="form-control" id="telefono2" value="{{ cliente.telefono2 }}" style="width: 190px;">
+                                    <input type="text" class="form-control" id="telefono2" value="{{ cliente.telefono2 }}" style="width: 140px;">
                                     {{ form.telefono2 }}
                                 </div>
                                 <!-- Teléfono 3 -->
                                 {{ form.telefono3.errors }}
                                 <div class="form-group">
                                     <label for="{{ form.telefono3.id_for_label }}">Teléfono 3:</label>
-                                    <input type="text" class="form-control" id="telefono3" value="{{ cliente.telefono3 }}" style="width: 190px;">
+                                    <input type="text" class="form-control" id="telefono3" value="{{ cliente.telefono3 }}" style="width: 140px;">
                                     {{ form.telefono3 }}
                                 </div>
                                 <!-- Teléfono 4 -->
                                 {{ form.telefono4.errors }}
                                 <div class="form-group">
                                     <label for="{{ form.telefono4.id_for_label }}">Teléfono 4:</label>
-                                    <input type="text" class="form-control" id="telefono4" value="{{ cliente.telefono4 }}" style="width: 190px;">
+                                    <input type="text" class="form-control" id="telefono4" value="{{ cliente.telefono4 }}" style="width: 140px;">
                                     {{ form.telefono4 }}
                                 </div>
                             </fieldset>
@@ -224,14 +231,14 @@
                                 {{ form.calle1.errors }}
                                 <div class="form-group">
                                     <label for="{{ form.calle1.id_for_label }}">Calle 1:</label>
-                                    <input type="text" class="form-control" id="calle1" value="{{ cliente.calle1 }}" style="width: 370px;">
+                                    <input type="text" class="form-control" id="calle1" value="{{ cliente.calle1 }}" style="width: 250px;">
                                     {{ form.calle1 }}
                                 </div>
                                 <!-- Calle 2 -->
                                 {{ form.calle2.errors }}
                                 <div class="form-group">
                                     <label for="{{ form.calle2.id_for_label }}">Calle 2:</label>
-                                    <input type="text" class="form-control" id="calle2" value="{{ cliente.calle2 }}" style="width: 370px;">
+                                    <input type="text" class="form-control" id="calle2" value="{{ cliente.calle2 }}" style="width: 250px;">
                                     {{ form.calle2 }}
                                 </div>
 

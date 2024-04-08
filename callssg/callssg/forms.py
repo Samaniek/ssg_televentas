@@ -1,5 +1,5 @@
 from django import forms
-from .models import Cliente
+from .models import Cliente, Notas
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -28,3 +28,8 @@ class ClienteForm(forms.ModelForm):
             'departamento': 'Departamento: ',
             'barrio': 'barrio: '
         }
+
+class NotasForm(forms.ModelForm):
+    class Meta:
+        model = Notas
+        fields = ['notas']

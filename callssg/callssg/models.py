@@ -31,6 +31,22 @@ class Meta:
     verbose_name_plural='clientes'
 
 
+class Notas(models.Model):
+    notas = models.TextField(blank=True, null=True, max_length=255)
+
+    def __str__(self):
+        return self.notas[:50]  # Retorna los primeros 50 caracteres del contenido como representación de cadena
+
+
+
+
+
+
+
+
+
+
+    
 #class Operador(models.Model):
     # Si necesitas guardar información específica del operador, agrégala aquí
     #pass
