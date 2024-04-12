@@ -158,20 +158,27 @@
                                 </div>
                             </fieldset>
                         </div>      
-                           <!-- Notas -->
-                            <div class="col-md-4" style="padding-left: 150px;">
-                                <div class="container_notas">
-                                    <form method="post" action="{% url 'clientes_view' %}">
-                                        {% csrf_token %}
-                                        <div class="form-group">
-                                            <label for="notas_texto" class="form-label">Texto:</label>
-                                            <textarea class="form-control" id="notas_texto" name="notas_texto" rows="5" style="width: 100%;">{% if ultima_nota %}{{ ultima_nota.texto }}{% else %}testeo{% endif %}</textarea>
-                                            <button type="submit" class="btn btn-primary">Guardar</button>
-                                        </div>
-                                    </form>
+                                <!-- Notas -->
+                                <div class="col-md-4" style="padding-left: 100px;">
+                                    <div class="container_notas">
+                                        <form method="post" action="{% url 'clientes_view' %}">
+                                            {% csrf_token %}
+                                            {{ form.as_p }}
+                                            <div class="form-group">
+                                                <label for="notas_texto" class="form-label"></label>
+                                                
+                                                    {% if ultima_nota %}
+                                                        {{ ultima_nota.notas }}
+                                                    {% endif %}
+
+                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                            </div>
+
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>                                    
-                        </div>
+                                     
+                    </div>
                     <br>
                     <h1>Datos Adicionales</h1>
                     <!-- CONTACTO -->

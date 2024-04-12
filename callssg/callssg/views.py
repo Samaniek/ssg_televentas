@@ -32,6 +32,9 @@ def clientes_view(request):
     # Obtener la última nota del cliente
     ultima_nota = cliente.notas_set.last()
 
+    # Inicializar nota_actualizada con un valor predeterminado
+    nota_actualizada = ultima_nota
+
     if request.method == 'POST':
         form = NotasForm(request.POST)
         if form.is_valid():
@@ -40,16 +43,18 @@ def clientes_view(request):
                 # Si ya hay una nota para este cliente, actualízala
                 ultima_nota.texto = nota_texto
                 ultima_nota.save()
+                nota_actualizada = ultima_nota  # Obtener la nota actualizada
             else:
                 # Si no hay una nota para este cliente, crea una nueva
                 nueva_nota = Notas(cliente=cliente, texto=nota_texto)
                 nueva_nota.save()
-            return redirect('clientes_view')  # Redirige a la vista para evitar resubmitir el formulario
+                nota_actualizada = nueva_nota  # Obtener la nota recién creada
+            
     else:
         form = NotasForm(initial={'cliente': cliente_id})  # Inicializa el formulario con el ID del cliente
     
     # Renderizar la plantilla con los datos paginados y el formulario de notas
-    context = {'page_obj': page_obj, 'form': form, 'ultima_nota': ultima_nota}
+    context = {'page_obj': page_obj, 'form': form, 'ultima_nota': nota_actualizada}
     return render(request, 'cliente.html', context)
 
 """

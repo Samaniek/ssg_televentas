@@ -9,7 +9,12 @@ fieldset {
 }
 
 .form-group {
-   margin-bottom: 10px;
+   margin-bottom: 4px;
+}
+
+.form-group_notas {
+   position: relative;
+   top: -0px;
 }
 
 .btn {
