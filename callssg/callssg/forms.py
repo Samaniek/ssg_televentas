@@ -32,4 +32,7 @@ class ClienteForm(forms.ModelForm):
 class NotasForm(forms.ModelForm):
     class Meta:
         model = Notas
-        fields = ['notas']
+        fields = ['texto']
+        widgets = {
+            'cliente': forms.HiddenInput()
+        }

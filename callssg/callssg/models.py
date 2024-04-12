@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Cliente(models.Model):
     
     cedula = models.CharField(primary_key=True, max_length=20)
@@ -32,21 +31,14 @@ class Meta:
 
 
 class Notas(models.Model):
-    notas = models.TextField(blank=True, null=True, max_length=255)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    texto = models.TextField()
+    fecha = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.notas[:50]  # Retorna los primeros 50 caracteres del contenido como representación de cadena
+        return self.texto
 
 
-
-
-
-
-
-
-
-
-    
 #class Operador(models.Model):
     # Si necesitas guardar información específica del operador, agrégala aquí
     #pass

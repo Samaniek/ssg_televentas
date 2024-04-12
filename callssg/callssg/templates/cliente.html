@@ -139,8 +139,8 @@
                                 </td>
                                 <br>
                                 <br>
+
                                 <!-- Ocupación -->
-                                {{ form.as_p }}
                                 <td align="center">Ocupación:</td>
                                 <div class="container_bloque_seleccion">
                                     <div class="form-group">
@@ -157,28 +157,21 @@
                                     </div>
                                 </div>
                             </fieldset>
+                        </div>      
+                           <!-- Notas -->
+                            <div class="col-md-4" style="padding-left: 150px;">
+                                <div class="container_notas">
+                                    <form method="post" action="{% url 'clientes_view' %}">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="notas_texto" class="form-label">Texto:</label>
+                                            <textarea class="form-control" id="notas_texto" name="notas_texto" rows="5" style="width: 100%;">{% if ultima_nota %}{{ ultima_nota.texto }}{% else %}testeo{% endif %}</textarea>
+                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>                                    
                         </div>
-                        
-                        <!-- Tercera columna -->
-                        <div class="col-md-4" style="padding-left: 100px;"> <!-- Mover el bloque notas -->
-                            <!-- NOTAS--> 
-                            <div class="container_notas">
-                                <form method="post" action="{% url 'agregar_notas' %}">
-                                    {% csrf_token %}
-                                    {{ form.as_p }}
-                                    <div class="form-group">
-                                        <label for="Notas">Notas</label>
-                                        <textarea class="form-control" rows="5" id="notas" name="notas" style="width: 170%;">
-                                            {% for nota in notas_guardadas %}
-                                            {{ nota.notas }}
-                                            {% endfor %}
-                                        </textarea>
-                                        <button type="submit" class="btn btn-primary">Guardar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>   
-                    </div>
                     <br>
                     <h1>Datos Adicionales</h1>
                     <!-- CONTACTO -->
