@@ -5,7 +5,7 @@ from .forms import NotasForm
 from django.shortcuts import get_object_or_404
 #from .forms import ClienteForm
 
-def clientes_view(request):
+def clientes_view(request, cliente_id=None):
     # Obtener todos los clientes de la base de datos
     clientes = Cliente.objects.all().order_by('cedula')
 
@@ -29,8 +29,8 @@ def clientes_view(request):
     # Obtener el cliente actual
     cliente = get_object_or_404(Cliente, cedula=cliente_id)
 
-    # Obtener la última nota del cliente
-    ultima_nota = cliente.notas_set.last()
+    # Obtener la última nota del cliente (si existe)
+    ultima_nota = cliente.notas_set.filter(cliente=cliente).first()
 
     if request.method == 'POST':
         form = NotasForm(request.POST)
@@ -45,10 +45,11 @@ def clientes_view(request):
                 # Si no hay una nota para este cliente, crea una nueva
                 nueva_nota = Notas(cliente=cliente, texto=nota_texto)
                 nueva_nota.save()
-                nota_actualizada = nueva_nota
+                #nota_actualizada = nueva_nota
     else:
-        form = NotasForm(initial={'cliente': cliente_id})
-        nota_actualizada = ultima_nota  # Asignar ultima_nota a nota_actualizada si no es una solicitud POST
+        form = NotasForm(instance=ultima_nota)
+        #form = NotasForm(initial={'cliente': cliente_id})
+        #nota_actualizada = ultima_nota  # Asignar ultima_nota a nota_actualizada si no es una solicitud POST
 
     # Renderizar la plantilla con los datos paginados y el formulario de notas
     context = {'page_obj': page_obj, 'form': form, 'ultima_nota': ultima_nota}

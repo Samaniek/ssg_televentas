@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>Cliente</title>
 </head>
+
 <body class="text-dark">
     {% block content %}
     <div class="container-fluid">
@@ -294,24 +295,6 @@
                     </div>
                     <hr>
                 {% endfor %}
-                <!-- PAGINACIÓN -->
-                {% if is_paginated %}
-                    <div class="pagination justify-content-center">
-                        <span class="step-links">
-                            {% if page_obj.has_previous %}
-                                <a href="?page=1">&laquo; Primero</a>
-                                <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-                            {% endif %}
-                            <span class="current">
-                                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-                            </span>
-                            {% if page_obj.has_next %}
-                                <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
-                                <a href="?page={{ page_obj.paginator.num_pages }}">Último &raquo;</a>
-                            {% endif %}
-                        </span>
-                    </div>
-                {% endif %}
             </div>
         </div>
         <!-- BOTON GUARDAR -->
